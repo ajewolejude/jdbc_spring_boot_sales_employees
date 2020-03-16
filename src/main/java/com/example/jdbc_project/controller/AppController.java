@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-public class SalesController {
+public class AppController {
     @Autowired
     private SaleService saleService;
 

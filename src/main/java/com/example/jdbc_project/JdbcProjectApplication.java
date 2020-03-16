@@ -11,15 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class JdbcProjectApplication implements CommandLineRunner {
-
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
-
-	@Autowired
-	private EmployeeJDBCRepository employeeRepository;
-
 	@Override
 	public void run(String... args) throws Exception {
-
 
 	}
 

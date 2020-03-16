@@ -21,7 +21,7 @@ public class SaleService {
     }
 
     public Sale get(long id){
-        return salesRepository.getOne(id);
+        return salesRepository.findById(id).get();
     }
 
     public void save(Sale sale){
