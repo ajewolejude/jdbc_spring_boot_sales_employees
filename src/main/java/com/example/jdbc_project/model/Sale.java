@@ -1,17 +1,23 @@
 package com.example.jdbc_project.model;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 public class Sale {
 
-    public int id;
-    public String item;
-    public int quantity;
-    public float amount;
+    private Long id;
+    private String item;
+    private int quantity;
+    private float amount;
 
-    public int getId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

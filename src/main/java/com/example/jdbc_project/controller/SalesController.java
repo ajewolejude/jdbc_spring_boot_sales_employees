@@ -2,7 +2,8 @@ package com.example.jdbc_project.controller;
 
 
 import com.example.jdbc_project.model.Sale;
-import com.example.jdbc_project.repository.SalesDAO;
+import com.example.jdbc_project.repository.SalesRepository;
+import com.example.jdbc_project.service.SaleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,11 +18,11 @@ import java.util.List;
 @Controller
 public class SalesController {
     @Autowired
-    private SalesDAO salesDAO;
+    private SaleService saleService;
 
     @RequestMapping("/")
     public String viewHomePage(Model model){
-        List<Sale> saleList = salesDAO.list();
+        List<Sale> saleList = saleService.getAll();
         model.addAttribute("salesList",saleList);
         return "index";
     }
@@ -36,7 +37,7 @@ public class SalesController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(@ModelAttribute("sale") Sale sale){
 
-         salesDAO.save(sale);
+         saleService.save(sale);
          return "redirect:/";
 
     }
@@ -45,7 +46,7 @@ public class SalesController {
     public ModelAndView showEditForm(@PathVariable(name = "id") int id){
         ModelAndView modelAndView = new ModelAndView("edit_form");
 
-        Sale sale = salesDAO.get(id);
+        Sale sale = saleService.get(id);
         modelAndView.addObject("sale", sale);
 
         return modelAndView;
@@ -54,7 +55,7 @@ public class SalesController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(@ModelAttribute("sale") Sale sale){
 
-        salesDAO.update(sale);
+        saleService.save(sale);
         return "redirect:/";
 
     }
@@ -62,7 +63,7 @@ public class SalesController {
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable(name = "id") int id){
 
-        salesDAO.delete(id);
+        saleService.delete(id);
 
         return "redirect:/";
     }
