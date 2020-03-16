@@ -15,4 +15,6 @@ import java.util.List;
 
 public interface SalesRepository extends JpaRepository<Sale, Long> {
 
+    public List<Sale> findByAmount(float amount);
+
 }

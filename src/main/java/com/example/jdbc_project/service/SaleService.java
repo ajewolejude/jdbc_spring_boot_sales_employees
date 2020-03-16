@@ -31,4 +31,8 @@ public class SaleService {
     public void delete(long id){
         salesRepository.deleteById(id);
     }
+
+    public List<Sale> findByAmount(float amount){
+        return salesRepository.findByAmount(amount);
+    }
 }
